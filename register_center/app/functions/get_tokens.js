@@ -4,20 +4,19 @@ module.exports = (fastify, payload) => {
     let jwt = fastify.jwt.sign(payload),
         token = md5(jwt),
         freshToken = md5(jwt + 'marico'),
-        timestamp = Date.now(),
-        createAt = new Timestamp(timestamp,5),
+        timestamp = Date.now(),       
         createTime = require('../../libs/getDate').getTime(timestamp),
         db_token = {
             userId: payload.userId,
             token: token,
-            createAt: createAt,
+            expireAt: new Date(timestamp + require('../../conf/conf').TOKEN_EXPIRE),
             createTime: createTime
         },
         db_freshToken = {
             userId: payload.userId,
             token: freshToken,
             jwt: jwt,
-            createAt: createAt,
+            expireAt: new Date(timestamp + require('../../conf/conf').FRESH_TOKEN_EXPIRE),
             createTime: createTime
         }
     return {

@@ -14,3 +14,5 @@ module.exports.RETURN_CODE = {
     USERNAME_OR_PASSWORD_INVALID_ERROR: -3,
 }
 module.exports.MONGODB_URL = 'mongodb://221.204.25.73:6666/fastify'
+module.exports.TOKEN_EXPIRE = 7200
+module.exports.FRESH_TOKEN_EXPIRE = 2 * 30 * 24 * 3600 * 1000

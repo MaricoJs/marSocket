@@ -1,11 +1,7 @@
 const CODE = require('../../conf/conf').RETURN_CODE;
 const getReturn = require('../../libs/getReturn').getReturn;
-const getTime = require('../../libs/getDate').getTime;
 const md5 = require('md5');
-const getTokens = require('./get_tokens');
-const get_id = require('mongodb').ObjectId;
-
-
+const getTokens = require('../../libs/getTokens');
 const login = async (fastify, req, res) => {
     let json,
         body = req.body,

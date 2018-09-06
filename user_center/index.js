@@ -18,8 +18,7 @@ fastify.register(require('./libs/register_db'), {
     }
 })
 fastify.register(require('./app/routes/router'))
-fastify.ready().then(() => {
-    fastify.listen(3000, err => {
-        if (err) throw err
-    })
+fastify.ready().then(async () => {
+    let startStatus = await fastify.listen(3000)
+    console.log(startStatus)
 })

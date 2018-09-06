@@ -4,7 +4,7 @@ module.exports.RETURN_CODE = {
     DB_ERROR: -1, //db connection error
     DB_FIND_ERROR: -10,
     DB_INSERT_ERROR: -11,
-    DC_UPDATE_ERROR: -12,
+    DB_UPDATE_ERROR: -12,
     DB_DEL_ERROR: -13,
     DB_NO_RECORD_ERROR: -14, //no such record in db
     DB_STATE_ERROR: -15,
@@ -16,3 +16,5 @@ module.exports.RETURN_CODE = {
 module.exports.MONGODB_URL = 'mongodb://221.204.25.73:6666/fastify'
 module.exports.TOKEN_EXPIRE = 7200
 module.exports.FRESH_TOKEN_EXPIRE = 2 * 30 * 24 * 3600 * 1000
+module.exports.SERVICE_CENTER_IP = "127.0.0.1"
+module.exports.SERVICE_CENTER_PORT = 3000

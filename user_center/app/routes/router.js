@@ -2,7 +2,7 @@ const login = require('../functions/login');
 const register = require('../functions/register');
 const getTokenByFreshToken = require('../functions/getTokenByFreshToken');
 const verifyToken = require('../functions/verifyToken');
-const onSeviceCenterMsg = require('../functions/onSeviceCenterMsg');
+const onSeviceCenterMsg = require('../../libs/onSeviceCenterMsg');
 const routes = async function (fastify, options) {
     fastify.post('/login', async (req, res) => {
         return await login(fastify, req, res)
@@ -16,7 +16,7 @@ const routes = async function (fastify, options) {
     fastify.get('/verify', async (req, res) => {
         return await verifyToken(fastify, req, res)
     })
-    fastify.get('/on-service-center-msg', async (req, res) => {
+    fastify.post('/on-service-center-msg', async (req, res) => {
         return await onSeviceCenterMsg(fastify, req, res)
     })
     fastify.get('/', async (req, reply) => {

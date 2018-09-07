@@ -17,4 +17,4 @@ module.exports.MONGODB_URL = 'mongodb://221.204.25.73:6666/fastify'
 module.exports.TOKEN_EXPIRE = 7200 * 1000
 module.exports.FRESH_TOKEN_EXPIRE = 2 * 30 * 24 * 3600 * 1000
 module.exports.SERVICE_CENTER_IP = "127.0.0.1"
-module.exports.SERVICE_CENTER_PORT = 3001
+module.exports.SERVICE_CENTER_PORT = 3000

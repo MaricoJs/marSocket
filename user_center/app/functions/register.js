@@ -14,7 +14,7 @@ const register = async (fastify, req, res) => {
         return getReturn(CODE.USERNAME_OR_PASSWORD_INVALID_ERROR, 'username or password is not availabe')
 
     }
-    try {
+    //try {
 
         let user = await fastify.DB.fastify__users.findOne({
             username: payload.username
@@ -23,9 +23,7 @@ const register = async (fastify, req, res) => {
         if (user == null) {
             user = {
                 username: payload.username,
-                password: md5(payload.password),
-                createAt: Date.now(),
-                createTime: getTime()
+                password: md5(payload.password)             
             }
             let userInsertRes = await fastify.DB.fastify__users.insertOne(user)
             // console.log(userInsertRes)
@@ -54,9 +52,9 @@ const register = async (fastify, req, res) => {
         } else {
             json = getReturn(CODE.DB_RECORD_EXISTS_ERROR, 'user has already existed')
         }
-    } catch (error) {
-        json = getReturn(CODE.DB_ERROR, 'DbExeption', error)
-    }
+    // } catch (error) {
+    //     json = getReturn(CODE.DB_ERROR, 'DbExeption', error)
+    // }
     return json
 
 }

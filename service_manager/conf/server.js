@@ -1,32 +1,30 @@
 module.exports = {
     SERVER_MODULE: 'USER_CENTER',
     ALIAS: 'USER',
-    APIS: {
-        login: {
-            path: '/login',
+    APIS: [{
+            name: '/login',
             type: 'post',
             des: 'user login'
         },
-        register: {
-            path: '/register',
+        {
+            name: '/register',
             type: 'post',
             des: 'user register'
         },
-        token: {
-            path: '/token',
+        {
+            name: '/token',
             type: 'get',
             des: 'get token by freshTken'
         },
-        verify: {
-            path: '/verify',
+        {
+            name: '/verify',
             type: 'get',
             des: 'verify if token is avilable'
         },
 
-    },
+    ],
     IP: '127.0.0.1',
-    PORT: 3000,
-    MSG_API: '/on-service-center-msg',
+    PORT: 3001,
     SCRIPTS: {},
     DEPENDECIES: {}
 }

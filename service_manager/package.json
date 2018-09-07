@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "cors": "^2.8.4",
+    "fastify": "^1.11.1",
+    "fastify-cors": "^0.1.0",
+    "fastify-jwt": "^0.3.0",
+    "fastify-mongodb": "^0.9.0",
+    "md5": "^2.2.1",
+    "request": "^2.88.0"
+  },
+  "name": "register_center",
+  "version": "1.0.0",
+  "description": "a register center of a socket based framework",
+  "main": "index.js",
+  "author": "Marico <ok@nongshiye.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  }
+}

@@ -14,12 +14,12 @@ fastify.register(require('fastify-mongodb'), {
 })
 fastify.register(require('./libs/register_db'), {
     dbs: {
-        fastify: ['freshTokens', 'tokens', 'users']
+        fastify: ['modules']
     }
 })
 fastify.register(require('./app/routes/router'))
+fastify.register(require('./libs/decorateServiceList'))
 fastify.ready().then(async () => {
     let startStatus = await fastify.listen(require('./conf/server').PORT)
     console.log(startStatus)
-    require('./libs/regToServiceCenter')()
 })

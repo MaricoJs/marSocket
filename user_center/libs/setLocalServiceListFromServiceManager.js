@@ -1,20 +1,30 @@
 let setLocalServiceListFromServiceManager = (fastify, opts, next) => {
-    let list ={},
-        set = (services) => {
-            serviceList = services
-            for (let servKey in services) {
-                if (services.hasOwnProperty(servKey)) {
-                    let curServList =  services[servKey]
-                  list[serv] = []
-                  let curServArr =[] 
+    let list = {},
+        services = {},
+        set = (serviceList) => {
+            for (let servKey in serviceList) {
+                if (serviceList.hasOwnProperty(servKey)) {
+                    let curServList = serviceList[servKey]
+                    list[serv] = []
                     for (let curServ in curServList) {
                         if (curServList.hasOwnProperty(curServ)) {
-                            curServArr.push(curServList[curServ])
+                            list[serv].push(curServList[curServ])
                         }
                     }
                 }
             }
+        },
+        setApis = (allServices) => {
+            Object.keys(allServices).map((serviceName, index) => {
+                if (!services.hasOwnProperty(serviceName)) {
+                    services[serviceName] = {
+                        apis:allServices[serviceName].APIS
+                    }
+
+                }
+            })
         }
+
     next()
 }
 module.exports = setLocalServiceListFromServiceManager

@@ -1,7 +1,6 @@
 const md5 = require('md5')
 const getTime = require('./getDate').getTime
 module.exports = (fastify, payload) => {
-
     let jwt = fastify.jwt.sign(payload),
         token = md5(jwt),
         freshToken = md5(jwt + 'marico'),

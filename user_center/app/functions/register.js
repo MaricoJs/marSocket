@@ -3,7 +3,7 @@ const getReturn = require('../../libs/getReturn').getReturn;
 const getTime = require('../../libs/getDate').getTime;
 const md5 = require('md5');
 const getTokens = require('../../libs/getTokens')
-const register = async (fastify, req, res) => {
+const register = async (fastify, req, res) => {  
     let json,
         body = req.body,
         payload = {

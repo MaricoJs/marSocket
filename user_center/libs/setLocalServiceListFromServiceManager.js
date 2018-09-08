@@ -1,30 +1,40 @@
-let setLocalServiceListFromServiceManager = (fastify, opts, next) => {
-    let list = {},
-        services = {},
-        set = (serviceList) => {
-            for (let servKey in serviceList) {
-                if (serviceList.hasOwnProperty(servKey)) {
-                    let curServList = serviceList[servKey]
-                    list[serv] = []
-                    for (let curServ in curServList) {
-                        if (curServList.hasOwnProperty(curServ)) {
-                            list[serv].push(curServList[curServ])
-                        }
-                    }
-                }
-            }
-        },
-        setApis = (allServices) => {
-            Object.keys(allServices).map((serviceName, index) => {
-                if (!services.hasOwnProperty(serviceName)) {
-                    services[serviceName] = {
-                        apis:allServices[serviceName].APIS
-                    }
+const api2funFactory = require('./apiToFunctionFactory')
 
+let setLocalServiceListFromServiceManager = (fastify, allServices) => {
+    let services = {},
+        nodes = {}
+    Object.keys(allServices).map((serviceName, index) => {
+        services[serviceName] = {}
+        nodes[serviceName] = []
+        //let curService = allServices[serviceName]
+        Object.keys(allServices[serviceName]).map((curServChildNodeName, index) => {
+            let curNode = allServices[serviceName][curServChildNodeName],
+                curApis = curNode.APIS
+            nodes[serviceName].push(`${curNode.IP}:${curNode.PORT}`)
+            Object.keys(curApis).map(apiName => {
+                if (!services[serviceName][apiName]) {
+                    services[serviceName][apiName] = async function (token, data, opts) {
+                        // console.log('i start')
+                        let nodeUrl = nodes[serviceName][0]
+                        let funFromApi = api2funFactory(nodeUrl, curApis[apiName].path, curApis[apiName].type)                        
+                        return funFromApi(token, data, opts)
+                    }
                 }
             })
-        }
 
-    next()
+        })
+
+    })
+
+
+    // console.log(services)
+    // console.log(nodes)
+
+    if (fastify.hasDecorator('SERVICES')) {
+        fastify.SERVICES = services
+    } else {
+        fastify.decorate('SERVICES', services)
+    }
+
 }
 module.exports = setLocalServiceListFromServiceManager

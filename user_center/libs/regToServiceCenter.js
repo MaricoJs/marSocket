@@ -15,10 +15,10 @@ module.exports = () => {
             },
             body: data
         }, function (error, response, body) {
-            console.log('response.statusCode: '+response.statusCode)
+            console.log('response.statusCode: ' + response.statusCode)
             if (!error && response.statusCode == 200) {
                 console.log(body) // 请求成功的处理逻辑
-            }else{
+            } else {
                 console.log(error)
             }
         });

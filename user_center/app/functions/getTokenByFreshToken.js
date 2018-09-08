@@ -5,7 +5,8 @@ const get_id = require('mongodb').ObjectId;
 const getTokenByFreshToken = async (fastify, req, res) => {
     let json,
         body = req.headers,
-        freshToken = body.freshtoken
+        freshToken = body.token
+        console.log(freshToken)
    // try {
 
         let freshToken_in_db = await fastify.DB.fastify__freshTokens.findOne({

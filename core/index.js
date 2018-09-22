@@ -11,7 +11,7 @@ fastify.get('/', async (req, res) => {
     return 'hello web'
 })
 fastify.register(require('./plugins/socket.io'))
-fastify.listen(8899).then(()=>{
+fastify.listen(8899,'0.0.0.0').then(()=>{
     console.log( fastify.server)
 })
 // const socketIo = require('socket.io')(fastify.server,{

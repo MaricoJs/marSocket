@@ -19,7 +19,7 @@ fastify.register(require('./libs/register_db'), {
 })
 fastify.register(require('./app/routes/router'))
 fastify.ready().then(async () => {
-    let startStatus = await fastify.listen(require('./conf/server').PORT)
+    let startStatus = await fastify.listen(require('./conf/server').PORT,'0.0.0.0')
     console.log(startStatus)
     require('./libs/regToServiceCenter')()
 })

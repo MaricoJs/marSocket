@@ -23,7 +23,7 @@ p||(p=u?443:80),r=e.hostname!==location.hostname||p!==e.port,a=e.secure!==u}if(e
 </body>
 <script>
     var count = 0
-    var socket = io('http://127.0.0.1:8899');
+    var socket = io(location.hostname+':8899');
     socket.on('connect', function () {
         console.log('connected')
         socket.emit('haode', 'world start');

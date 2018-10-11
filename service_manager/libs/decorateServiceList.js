@@ -13,7 +13,8 @@ function decorateServiceList(fastify, opts, next) {
                 list[server.SERVER_MODULE][server_key] = server
             }
             console.log(list)
-            broadcast()
+            //broadcast()
+            return this
         },
         broadcast = () => {
             for (let _module_name in list) {
@@ -26,6 +27,7 @@ function decorateServiceList(fastify, opts, next) {
                     }
                 }
             }
+            return this
         }
     fastify.decorate('SERVICES', {
         list,

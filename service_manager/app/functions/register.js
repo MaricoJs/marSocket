@@ -6,7 +6,7 @@ const md5 = require('md5');
 const register = async (fastify, req, res) => {
     let json = 'hello world',
         service = req.body
-    fastify.SERVICES.add(service)
+    fastify.SERVICES.add(service).broadcast()
     return json
 
 }
